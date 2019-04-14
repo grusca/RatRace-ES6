@@ -57,7 +57,20 @@ Game.prototype.renderScreen = function () {
 }
 
 Game.prototype.checkCollisions = function() {
-
+    this.cats.forEach((cat, index ) =>  {
+        const isColliding = this.mouse.checkCollisionWithCat(cat);
+        if (isColliding){
+            this.cats.splice(index,1);
+            this.mouse.setLives();
+            console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
+            if (this.mouse.lives === 0){
+                this.gameOver = true;
+                this.cat.speed = 0;
+                this.buildGameOverScreen();
+                console.log('gameOver')
+            }
+        }
+    })
 }
 
 

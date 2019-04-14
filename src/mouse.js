@@ -35,6 +35,21 @@ Mouse.prototype.setLives = function () {
     this.lives --;
 }
 
-Mouse.prototype.checkCollision = function () {
+Mouse.prototype.checkCollisionWithCat = function (cat) {
 
+    const collisionRight = this.x + this.size/2 > cat.x - cat.size/2;
+    const collisionLeft = this.x - this.size/2 < cat.x + cat.size/2;
+    const collisionTop = this.y - this.size/2 < cat.y + cat.size/2;
+    const collisionBottom = this.y + this.size/2 > cat.y - cat.size/2;
+    
+    return collisionRight && collisionLeft && collisionTop && collisionBottom;
+}
+
+Mouse.prototype.checkCollisionWithCheese = function (cheese) {
+    const collisionRight = this.x + this.size/2 > cheese.x - cheese.size/2;
+    const collisionLeft = this.x - this.size/2 < cheese.x + cheese.size/2;
+    const collisionTop = this.y - this.size/2 < cheese.y + cheese.size/2;
+    const collisionBottom = this.y + this.size/2 > cheese.y - cheese.size/2;
+    
+    return collisionRight && collisionLeft && collisionTop && collisionBottom;
 }
