@@ -1,5 +1,4 @@
 'use strict'
-console.log('mouse');
 
 function Mouse (canvas) {
     this.lives = 4;
@@ -36,7 +35,6 @@ Mouse.prototype.setLives = function () {
 }
 
 Mouse.prototype.checkCollisionWithCat = function (cat) {
-    
     const catCollisionRight = this.x + this.size/2 > cat.x - cat.size/2;
     const catCollisionLeft = this.x - this.size/2 < cat.x + cat.size/2;
     const catCollisionTop = this.y - this.size/2 < cat.y + cat.size/2;
@@ -48,7 +46,6 @@ Mouse.prototype.checkCollisionWithCat = function (cat) {
 
 
 Mouse.prototype.checkCollisionWithCheese = function (cheese) {
-    console.log('checking collisions with cheese')
     const cheeseCollisionRight = this.x + this.size/2 > cheese.x - cheese.size/2;
     const cheeseCollisionLeft = this.x - this.size/2 < cheese.x + cheese.size/2;
     const cheeseCollisionTop = this.y - this.size/2 < cheese.y + cheese.size/2;

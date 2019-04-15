@@ -1,5 +1,5 @@
 'use strict'
-console.log('main');
+
 function main () {
 
     const mainElement = document.querySelector('main');
@@ -72,7 +72,7 @@ function main () {
 
     function buildGameOverScreen() {
         const gameOverScreen = buildDom(`
-            <section>
+            <section class="gameOver>
                 <h1>Looser</h1>
                 <p>Don't Let the Cat Catch You</p>
                 <button class="restart-button">Try Again</button>

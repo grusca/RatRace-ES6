@@ -1,5 +1,4 @@
 'use strict'
-console.log('cheese');
 
 function Cheese (canvas) {
     this.size = 40;

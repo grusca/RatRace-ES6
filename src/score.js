@@ -1,5 +1,4 @@
 'use strict'
-console.log('score');
 
 function Score (canvas) {
     this.size = 50;
@@ -13,8 +12,7 @@ function Score (canvas) {
 
 
 Score.prototype.render = function() {
-    console.log('hola');
     this.ctx.font = "20px Georgia";
-    this.ctx.fillText("Number of lives", 10, 50);  
+    this.ctx.fillText("Number of lives" , 10, 50);  
 }
 

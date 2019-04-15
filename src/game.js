@@ -1,5 +1,5 @@
 'use strict'
-console.log('game');
+
 function Game (canvas) {
     this.mouse = null;
     this.cats = [];
@@ -8,6 +8,8 @@ function Game (canvas) {
     this.ctx = this.canvas.getContext('2d');
     this.gameOver = false;
     this.gameSound = new Audio ("sounds/gameSound.wav")
+    this.collision = new Audio ("sounds/catSound.wav")
+    this.winSound = new Audio ("sounds/winSound.wav")
     this.score = null;
 };
 
@@ -33,7 +35,6 @@ Game.prototype.startLoop = function () {
         this.checkCatCollisions();
         this.checkCheeseCollisions();
         if (this.gameOver === false)
-        console.log(this.mouse.direction)
         if (!this.gameOver) {
             window.requestAnimationFrame(loop);
         }
@@ -67,11 +68,10 @@ Game.prototype.renderScreen = function () {
 Game.prototype.checkCatCollisions = function() {
     this.cats.forEach((cat, index ) =>  {
         const isColliding = this.mouse.checkCollisionWithCat(cat);
-        //var catSound = new Audio ("sounds/catSound.wav")
         if (isColliding){
             this.cats.splice(index,1);
             this.mouse.setLives();
-           // catSound.play();
+            this.collision.play();
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
             if (this.mouse.lives === 0){
                 this.gameOver = true;
@@ -86,7 +86,7 @@ Game.prototype.checkCatCollisions = function() {
 Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
-        this.gameOver = true;
+        this.winSound.play();
         this.buildNextLevelScreen();
         console.log('Mission Accomplished');
         console.log('Next Level');

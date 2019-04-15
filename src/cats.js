@@ -1,5 +1,4 @@
 'use strict'
-console.log('cats');
 
 function Cat (canvas, y) {
     this.speed = 3;
