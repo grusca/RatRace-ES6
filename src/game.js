@@ -3,7 +3,7 @@ console.log('game');
 function Game (canvas) {
     this.mouse = null;
     this.cats = [];
-    this.cheese = [];
+    this.cheese = null;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.gameOver = false;
@@ -26,7 +26,7 @@ Game.prototype.startLoop = function () {
         this.updateScreen();
         this.renderScreen();
         this.checkCatCollisions();
-        // this.checkCheeseCollisions();
+        this.checkCheeseCollisions();
         if (this.gameOver === false)
         console.log(this.mouse.direction)
 
@@ -76,15 +76,13 @@ Game.prototype.checkCatCollisions = function() {
     })
 }
 
-
-
 Game.prototype.checkCheeseCollisions = function() {
-    const isCheeseColliding = this.mouse.checkCollisionWithCheese(cheese);
+    const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
         this.gameOver = true;
         this.buildGameOverScreen();
-        console.log('Mission Accomplished')
-        console.log('Next Level')
+        console.log('Mission Accomplished');
+        console.log('Next Level');
     }
 }
 
