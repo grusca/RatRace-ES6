@@ -156,7 +156,14 @@ color:#E5E7E9;
 .game-container {
     height: 100vh;
 }
- /* SplashScreen style */
+
+.nextLevel {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+}
 
 .title {
     font-size: 32px;

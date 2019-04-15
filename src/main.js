@@ -87,7 +87,7 @@ function main () {
 
     function buildNextLevelScreen() {
         const nextLevelScreen = buildDom(`
-            <section>
+            <section class="nextLevel">
                 <h1>Good Job</h1>
                 <p>Ready for next level?</p>
                 <button class="restart-button">Next Level</button>
