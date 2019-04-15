@@ -16,6 +16,7 @@ function main () {
                 <h1>Mouse Trap</h1>
                 <img src='img/cheese.png' alt=cheese height= "200px" width=auto"> 
                 <button class="start-button">Start</button>
+                <audio id='gameSound' src="./sounds/gameSound.wav"></audio>
             </section>
             `);
 
@@ -25,6 +26,9 @@ function main () {
     }
     
       function buildGameScreen () {
+        /*var gameSound = new Audio ("sounds/gameSound.wav")
+        gameSound.loop = true;
+        gameSound.play(); */
         const gameScreen = buildDom(`
         <section class="game-container">
             <canvas></canvas>

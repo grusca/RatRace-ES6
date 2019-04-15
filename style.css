@@ -142,13 +142,9 @@ body {
 }
 
 
-.game-container {
-    width: 100%;
-    height: 90vh;
-    border: 1px solid black;
+h1{
+color:#E5E7E9;
 }
-
-
 
 .splash {
     text-align: center;
@@ -156,20 +152,18 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    height: 100vh;
+    background-image: radial-gradient(circle, #f1c40f, #f2ba0b, #f3b00b, #f3a60e, #f39c12);
 }
 
 .game-container {
-    width: 100%;
     height: 100vh;
-    border: 1px solid black;
 }
  /* SplashScreen style */
 
 .title {
     font-size: 32px;
     font-family: 'Acme', sans-serif;
-    margin-top: 100px;
 }
 img {
     height: 200px;

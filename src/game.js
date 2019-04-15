@@ -3,7 +3,7 @@ console.log('game');
 function Game (canvas) {
     this.mouse = null;
     this.cats = [];
-    this.cheese = null;
+    this.cheese = [];
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.gameOver = false;
@@ -25,7 +25,8 @@ Game.prototype.startLoop = function () {
         this.clearScreen();
         this.updateScreen();
         this.renderScreen();
-        this.checkCollisions();
+        this.checkCatCollisions();
+        // this.checkCheeseCollisions();
         if (this.gameOver === false)
         console.log(this.mouse.direction)
 
@@ -56,12 +57,14 @@ Game.prototype.renderScreen = function () {
     })
 }
 
-Game.prototype.checkCollisions = function() {
+Game.prototype.checkCatCollisions = function() {
     this.cats.forEach((cat, index ) =>  {
         const isColliding = this.mouse.checkCollisionWithCat(cat);
+        //var catSound = new Audio ("sounds/catSound.wav")
         if (isColliding){
             this.cats.splice(index,1);
             this.mouse.setLives();
+           // catSound.play();
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
             if (this.mouse.lives === 0){
                 this.gameOver = true;
@@ -74,7 +77,18 @@ Game.prototype.checkCollisions = function() {
 }
 
 
+
+Game.prototype.checkCheeseCollisions = function() {
+    const isCheeseColliding = this.mouse.checkCollisionWithCheese(cheese);
+    if (isCheeseColliding){
+        this.gameOver = true;
+        this.buildGameOverScreen();
+        console.log('Mission Accomplished')
+        console.log('Next Level')
+    }
+}
+
+
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;
-
 }

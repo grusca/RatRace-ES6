@@ -8,6 +8,7 @@ function Cat (canvas, y) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgCat');
+    this.catSound = 
     this.x = this.canvas.width + this.size/2;
     this.y = y;
 }

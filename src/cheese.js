@@ -8,15 +8,13 @@ function Cheese (canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgCheese');
-    this.x = Math.random() * (this.canvas.width - 15)
+    this.x = this.canvas.width/2;                  //should generate random x axis point
     this.y = this.canvas.height/12;
 }
 
 
 Cheese.prototype.render = function() {
-    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size); 
-    console.log('render cheese');
-    
+    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size);     
 }
 
 
