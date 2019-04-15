@@ -31,7 +31,8 @@ function main () {
         gameSound.play(); */
         const gameScreen = buildDom(`
         <section class="game-container">
-            <canvas></canvas>
+            <canvas>
+            </canvas>
         </section>
         `);
 

@@ -155,6 +155,7 @@ color:#E5E7E9;
 
 .game-container {
     height: 100vh;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAE5JREFUGBlj1Gs7+J+BCMBEhBqwErjCY151ePXAFVpta2KAKYbRyDoZ0d0IUgTShA7gJoIkYIqIMhFmEkwTjI9hNUwCnUaxGl0SmU+0QgBSdhqLggDquQAAAABJRU5ErkJggg==) repeat;
 }
 
 .nextLevel {
