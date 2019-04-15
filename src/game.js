@@ -7,13 +7,18 @@ function Game (canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.gameOver = false;
+    this.gameSound = new Audio ("sounds/gameSound.wav")
+    this.score = null;
 };
 
 Game.prototype.startLoop = function () {
 
-    this.mouse = new Mouse(this.canvas);
+    this.gameSound.loop = true;
+    this.gameSound.play(); 
 
+    this.mouse = new Mouse(this.canvas);
     this.cheese = new Cheese(this.canvas);
+    this.score = new Score(this.canvas);
 
     const loop = () => {
 
@@ -29,8 +34,9 @@ Game.prototype.startLoop = function () {
         this.checkCheeseCollisions();
         if (this.gameOver === false)
         console.log(this.mouse.direction)
-
-        window.requestAnimationFrame(loop);
+        if (!this.gameOver) {
+            window.requestAnimationFrame(loop);
+        }
     }
     window.requestAnimationFrame(loop);
 }
@@ -50,6 +56,7 @@ Game.prototype.updateScreen = function() {
 }
 
 Game.prototype.renderScreen = function () {
+    this.score.render();
     this.mouse.render();
     this.cheese.render();
     this.cats.forEach(function(cat) {
@@ -89,8 +96,14 @@ Game.prototype.checkCheeseCollisions = function() {
 
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;
+    //this.gameSound.pause();
+   // this.gameSound.currentTime = 0;
+   // this.gameSound.loop = false;
 }
 
 Game.prototype.setNextLevelCallback = function(buildNextLevelScreen) {
     this.buildNextLevelScreen = buildNextLevelScreen;
+    //this.gameSound.pause();
+    //this.gameSound.currentTime = 0;
+   // this.gameSound.loop = false;
 }

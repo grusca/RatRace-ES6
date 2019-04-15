@@ -8,8 +8,8 @@ function Cheese (canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgCheese');
-    this.x = this.canvas.width/2;                  //should generate random x axis point
-    this.y = this.canvas.height/12;
+    this.x = Math.floor(Math.random()*this.canvas.width);
+    this.y = Math.floor(Math.random()*this.canvas.height);
 }
 
 
