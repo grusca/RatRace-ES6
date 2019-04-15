@@ -48,6 +48,7 @@ function main () {
         const game = new Game(canvasElement);
         game.startLoop();
         game.setGameOverCallback(buildGameOverScreen);
+        game.setNextLevelCallback(buildNextLevelScreen);
 
         document.addEventListener('keydown', function (event) {
             if (event.keyCode === 38) {
@@ -74,8 +75,22 @@ function main () {
         const gameOverScreen = buildDom(`
             <section>
                 <h1>Looser</h1>
-                <p>Don't Let the Cat Catch You"</p>
+                <p>Don't Let the Cat Catch You</p>
                 <button class="restart-button">Try Again</button>
+            </section>
+        `)
+
+        const restartButton = document.querySelector('.restart-button')
+        
+        restartButton.addEventListener ('click', buildGameScreen);
+    }
+
+    function buildNextLevelScreen() {
+        const nextLevelScreen = buildDom(`
+            <section>
+                <h1>Good Job</h1>
+                <p>Ready for next level?</p>
+                <button class="restart-button">Next Level</button>
             </section>
         `)
 

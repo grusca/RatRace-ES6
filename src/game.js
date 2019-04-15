@@ -80,7 +80,7 @@ Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
         this.gameOver = true;
-        this.buildGameOverScreen();
+        this.buildNextLevelScreen();
         console.log('Mission Accomplished');
         console.log('Next Level');
     }
@@ -89,4 +89,8 @@ Game.prototype.checkCheeseCollisions = function() {
 
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;
+}
+
+Game.prototype.setNextLevelCallback = function(buildNextLevelScreen) {
+    this.buildNextLevelScreen = buildNextLevelScreen;
 }
