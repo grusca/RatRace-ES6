@@ -29,10 +29,15 @@ function main () {
 
         const gameScreen = buildDom(`
         <section class="game-container">
-            <canvas>
-            </canvas>
+            <div class="gameInfo">    
+                <h2 id="levelInfo"></h2>
+                <h2 id="livesInfo"></h2>
+            </div>
+            <canvas></canvas>
         </section>
         `);
+
+
 
         const gameContainerElement = document.querySelector('.game-container')
 
@@ -45,9 +50,14 @@ function main () {
 
 
         const game = new Game(canvasElement);
+
         game.startLoop();
         game.setGameOverCallback(buildGameOverScreen);
         // game.setNextLevelCallback(buildNextLevelScreen);
+        
+        document.querySelector('#levelInfo').innerHTML = "LEVEL: " + game.mouse.level;
+        document.querySelector('#livesInfo').innerHTML = "LIVES: " + game.mouse.lives;
+
 
         document.addEventListener('keydown', function (event) {
             if (event.keyCode === 38) {
@@ -60,6 +70,7 @@ function main () {
                 game.mouse.setxDirection(1)
             }
          })
+
     
         document.addEventListener('keyup', function(event){
             if(event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 37 || event.keyCode === 39 ) {
