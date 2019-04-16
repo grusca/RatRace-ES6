@@ -1,3 +1,4 @@
+/*
 'use strict'
 
 function Score (canvas) {
@@ -16,3 +17,4 @@ Score.prototype.render = function() {
     this.ctx.fillText("Number of lives" , 10, 50);  
 }
 
+*/

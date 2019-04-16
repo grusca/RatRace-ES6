@@ -20,7 +20,6 @@ Game.prototype.startLoop = function () {
 
     this.mouse = new Mouse(this.canvas);
     this.cheese = new Cheese(this.canvas);
-    this.score = new Score(this.canvas);
 
     const loop = () => {
 
