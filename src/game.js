@@ -10,7 +10,7 @@ function Game (canvas) {
     this.gameSound = new Audio ("sounds/gameSound.wav")
     this.catSound = new Audio ("sounds/catSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
-    this.score = null;
+    this.score = 0;
 };
 
 Game.prototype.startLoop = function () {
@@ -57,7 +57,7 @@ Game.prototype.updateScreen = function() {
 }
 
 Game.prototype.renderScreen = function () {
-    this.score.render();
+    //this.score.render();
     this.mouse.render();
     this.cheese.render();
     this.cats.forEach(function(cat) {
@@ -86,9 +86,9 @@ Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
         this.winSound.play();
-        this.mouse.level += 1;
+        this.mouse.setLevel();
+        console.log('Game level: ' + this.mouse.level);
         this.cats.forEach((cat)  => {
-            console.log(this)
             cat.speed = this.mouse.level * cat.speed;
         })
        
@@ -113,6 +113,8 @@ Game.prototype.setNextLevelCallback = function() {
     this.gameSound.loop = true;
     this.gameSound.play(); 
     this.mouse.level +=1;
+    this.score +=1;
+    console.log(this.score);
     //this.gameSound.pause();
     //this.gameSound.currentTime = 0;
    // this.gameSound.loop = false;

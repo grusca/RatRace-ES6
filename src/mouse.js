@@ -35,6 +35,10 @@ Mouse.prototype.setLives = function () {
     this.lives --;
 }
 
+Mouse.prototype.setLevel = function () {
+    this.level ++;
+}
+
 Mouse.prototype.checkCollisionWithCat = function (cat) {
     const catCollisionRight = this.x + this.size/2 > cat.x - cat.size/2;
     const catCollisionLeft = this.x - this.size/2 < cat.x + cat.size/2;
