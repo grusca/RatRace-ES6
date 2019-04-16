@@ -47,7 +47,7 @@ function main () {
         const game = new Game(canvasElement);
         game.startLoop();
         game.setGameOverCallback(buildGameOverScreen);
-        game.setNextLevelCallback(buildNextLevelScreen);
+        // game.setNextLevelCallback(buildNextLevelScreen);
 
         document.addEventListener('keydown', function (event) {
             if (event.keyCode === 38) {
@@ -72,7 +72,7 @@ function main () {
 
     function buildGameOverScreen() {
         const gameOverScreen = buildDom(`
-            <section class="gameOver>
+            <section class="gameOver">
                 <h1>Looser</h1>
                 <p>Don't Let the Cat Catch You</p>
                 <button class="restart-button">Try Again</button>
@@ -80,23 +80,22 @@ function main () {
         `)
 
         const restartButton = document.querySelector('.restart-button')
-        
         restartButton.addEventListener ('click', buildGameScreen);
     }
 
-    function buildNextLevelScreen() {
-        const nextLevelScreen = buildDom(`
-            <section class="nextLevel">
-                <h1>Good Job</h1>
-                <p>Ready for next level?</p>
-                <button class="restart-button">Next Level</button>
-            </section>
-        `)
+    // function buildNextLevelScreen() {
+    //     const nextLevelScreen = buildDom(`
+    //         <section class="nextLevel">
+    //             <h1>Good Job</h1>
+    //             <p>Ready for next level?</p>
+    //             <button class="restart-button">Next Level</button>
+    //         </section>
+    //     `)
 
-        const restartButton = document.querySelector('.restart-button')
+    //     const restartButton = document.querySelector('.restart-button')
         
-        restartButton.addEventListener ('click', buildGameScreen);
-    }
+    //     restartButton.addEventListener ('click', buildGameScreen);
+    // }
     
 
     buildSplashScreen();

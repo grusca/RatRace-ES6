@@ -167,6 +167,14 @@ color:#E5E7E9;
         height: 100vh;
 }
 
+.gameOver {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+}
+
 .title {
     font-size: 32px;
     font-family: 'Acme', sans-serif;

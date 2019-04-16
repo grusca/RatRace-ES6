@@ -2,6 +2,7 @@
 
 function Mouse (canvas) {
     this.lives = 4;
+    this.level = 1;
     this.size = 60;
     this.canvas = canvas;
     this.x = this.canvas.width/2;

@@ -8,7 +8,7 @@ function Game (canvas) {
     this.ctx = this.canvas.getContext('2d');
     this.gameOver = false;
     this.gameSound = new Audio ("sounds/gameSound.wav")
-    this.collision = new Audio ("sounds/catSound.wav")
+    this.catSound = new Audio ("sounds/catSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
     this.score = null;
 };
@@ -71,11 +71,10 @@ Game.prototype.checkCatCollisions = function() {
         if (isColliding){
             this.cats.splice(index,1);
             this.mouse.setLives();
-            this.collision.play();
+            this.catSound.play();
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
             if (this.mouse.lives === 0){
                 this.gameOver = true;
-                this.cat.speed = 0;
                 this.buildGameOverScreen();
                 console.log('gameOver')
             }
@@ -87,7 +86,14 @@ Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
         this.winSound.play();
-        this.buildNextLevelScreen();
+        this.mouse.level += 1;
+        this.cats.forEach((cat)  => {
+            console.log(this)
+            cat.speed = this.mouse.level * cat.speed;
+        })
+       
+        
+        this.setNextLevelCallback();
         console.log('Mission Accomplished');
         console.log('Next Level');
     }
@@ -101,8 +107,12 @@ Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
    // this.gameSound.loop = false;
 }
 
-Game.prototype.setNextLevelCallback = function(buildNextLevelScreen) {
-    this.buildNextLevelScreen = buildNextLevelScreen;
+Game.prototype.setNextLevelCallback = function() {
+    this.cheese = new Cheese(this.canvas);
+    this.mouse = new Mouse(this.canvas);
+    this.gameSound.loop = true;
+    this.gameSound.play(); 
+    this.mouse.level +=1;
     //this.gameSound.pause();
     //this.gameSound.currentTime = 0;
    // this.gameSound.loop = false;
