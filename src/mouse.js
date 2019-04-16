@@ -1,8 +1,7 @@
 'use strict'
 
-function Mouse (canvas) {
+function Mouse (canvas, level = 1) {
     this.lives = 4;
-    this.level = 1;
     this.size = 60;
     this.canvas = canvas;
     this.x = this.canvas.width/2;
@@ -35,16 +34,12 @@ Mouse.prototype.setLives = function () {
     this.lives --;
 }
 
-Mouse.prototype.setLevel = function () {
-    this.level ++;
-}
 
 Mouse.prototype.checkCollisionWithCat = function (cat) {
     const catCollisionRight = this.x + this.size/2 > cat.x - cat.size/2;
     const catCollisionLeft = this.x - this.size/2 < cat.x + cat.size/2;
     const catCollisionTop = this.y - this.size/2 < cat.y + cat.size/2;
     const catCollisionBottom = this.y + this.size/2 > cat.y - cat.size/2;
-    
     return catCollisionRight && catCollisionLeft && catCollisionTop && catCollisionBottom;
 }
 
@@ -55,7 +50,6 @@ Mouse.prototype.checkCollisionWithCheese = function (cheese) {
     const cheeseCollisionLeft = this.x - this.size/2 < cheese.x + cheese.size/2;
     const cheeseCollisionTop = this.y - this.size/2 < cheese.y + cheese.size/2;
     const cheeseCollisionBottom = this.y + this.size/2 > cheese.y - cheese.size/2;
-    
     return cheeseCollisionRight && cheeseCollisionLeft && cheeseCollisionTop && cheeseCollisionBottom;
 }
 

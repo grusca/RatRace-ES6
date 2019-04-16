@@ -53,9 +53,8 @@ function main () {
 
         game.startLoop();
         game.setGameOverCallback(buildGameOverScreen);
-        // game.setNextLevelCallback(buildNextLevelScreen);
         
-        document.querySelector('#levelInfo').innerHTML = "LEVEL: " + game.mouse.level;
+        document.querySelector('#levelInfo').innerHTML = "LEVEL: " + game.level;
         document.querySelector('#livesInfo').innerHTML = "LIVES: " + game.mouse.lives;
 
 
@@ -93,20 +92,6 @@ function main () {
         const restartButton = document.querySelector('.restart-button')
         restartButton.addEventListener ('click', buildGameScreen);
     }
-
-    // function buildNextLevelScreen() {
-    //     const nextLevelScreen = buildDom(`
-    //         <section class="nextLevel">
-    //             <h1>Good Job</h1>
-    //             <p>Ready for next level?</p>
-    //             <button class="restart-button">Next Level</button>
-    //         </section>
-    //     `)
-
-    //     const restartButton = document.querySelector('.restart-button')
-        
-    //     restartButton.addEventListener ('click', buildGameScreen);
-    // }
     
 
     buildSplashScreen();

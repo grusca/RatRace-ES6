@@ -156,8 +156,9 @@ color:#E5E7E9;
 .game-container {
     height: 100vh;
     position: static;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAE5JREFUGBlj1Gs7+J+BCMBEhBqwErjCY151ePXAFVpta2KAKYbRyDoZ0d0IUgTShA7gJoIkYIqIMhFmEkwTjI9hNUwCnUaxGl0SmU+0QgBSdhqLggDquQAAAABJRU5ErkJggg==) repeat;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAE5JREFUGBlj1Gs7+J+BCMBEhBqwErjCY151ePXAFVpta2KAKYbRyDoZ0d0IUgTShA7gJoIkYIqIMhFmEkwTjI9hNUwCnUaxGl0SmU+0QgBSdhqLggDquQAAAABJRU5ErkJggg==) repeat; 
 }
+
 
 .gameInfo {
         display: flex;
@@ -211,5 +212,16 @@ img {
     animation: pulsate-bck 2s ease-in-out infinite both;
   }
 
-
+.restart-button {
+        width: 180px;
+        height: 50px;
+        font-size: 20px;
+        background-color: #00c9b7;
+        border-radius: 50px;
+        color: #fff;
+        text-align: center;
+        display: inline;
+        -webkit-animation: pulsate-bck 2s ease-in-out infinite both;
+        animation: pulsate-bck 2s ease-in-out infinite both;
+        }
 

@@ -10,7 +10,7 @@ function Game (canvas) {
     this.gameSound = new Audio ("sounds/gameSound.wav")
     this.catSound = new Audio ("sounds/catSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
-    this.score = 0;
+    this.level = 1;
 };
 
 Game.prototype.startLoop = function () {
@@ -27,7 +27,7 @@ Game.prototype.startLoop = function () {
         if (Math.random() < .05 ) {
             //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
             const yAxis = Math.floor(Math.random() * 3) * this.canvas.height/3+40;
-            this.cats.push(new Cat(this.canvas, yAxis))
+            this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
         this.updateScreen();
@@ -57,7 +57,6 @@ Game.prototype.updateScreen = function() {
 }
 
 Game.prototype.renderScreen = function () {
-    //this.score.render();
     this.mouse.render();
     this.cheese.render();
     this.cats.forEach(function(cat) {
@@ -86,13 +85,9 @@ Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
         this.winSound.play();
-        this.mouse.setLevel();
-        console.log('Game level: ' + this.mouse.level);
-        this.cats.forEach((cat)  => {
-            cat.speed = this.mouse.level * cat.speed;
-        })
-       
-        
+        this.level += 1;
+        document.querySelector('#levelInfo').innerHTML = "LEVEL: " + this.level;
+        console.log('Game level: ' + this.level);
         this.setNextLevelCallback();
         console.log('Mission Accomplished');
         console.log('Next Level');
@@ -100,11 +95,10 @@ Game.prototype.checkCheeseCollisions = function() {
 }
 
 
+
+
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;
-    //this.gameSound.pause();
-   // this.gameSound.currentTime = 0;
-   // this.gameSound.loop = false;
 }
 
 Game.prototype.setNextLevelCallback = function() {
@@ -112,10 +106,4 @@ Game.prototype.setNextLevelCallback = function() {
     this.mouse = new Mouse(this.canvas);
     this.gameSound.loop = true;
     this.gameSound.play(); 
-    this.mouse.level +=1;
-    this.score +=1;
-    console.log(this.score);
-    //this.gameSound.pause();
-    //this.gameSound.currentTime = 0;
-   // this.gameSound.loop = false;
 }

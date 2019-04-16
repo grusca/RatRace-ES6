@@ -1,7 +1,7 @@
 'use strict'
 
-function Cat (canvas, y) {
-    this.speed = 3;
+function Cat (canvas, y, speed) {
+    this.speed = speed;
     this.size = 40;
     this.direction = -1;
     this.canvas = canvas;
