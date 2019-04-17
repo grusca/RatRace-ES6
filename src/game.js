@@ -11,6 +11,7 @@ function Game (canvas) {
     this.gameSound = new Audio ("sounds/gameSound.wav")
     this.catSound = new Audio ("sounds/catSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
+    this.gameOverSound = new Audio ("sounds/loseSound.wav")
     this.level = 1;
 };
 
@@ -25,14 +26,12 @@ Game.prototype.startLoop = function () {
 
     const loop = () => {
 
-        if (Math.random() < .025  ) {
-            //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.8+110;
+        if (Math.random() < .025 ) {
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+100;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
         if (Math.random() < .025 ) {
-            //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.8+240;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+230;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
@@ -90,6 +89,27 @@ Game.prototype.checkCatCollisions = function() {
             if (this.mouse.lives === 0){
                 this.gameOver = true;
                 this.buildGameOverScreen();
+                this.gameSound.pause();
+                this.gameOverSound.play();
+                console.log('gameOver')
+            }
+        }
+    })
+}
+
+Game.prototype.checkTrapCollisions = function() {
+    this.cats.forEach((trap, index ) =>  {
+        const isColliding = this.mouse.checkCollisionWithTrap(trap);
+        if (isColliding){
+            this.traps.splice(index,1);
+            this.mouse.setLives();
+            document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
+            console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
+            if (this.mouse.lives === 0){
+                this.gameOver = true;
+                this.buildGameOverScreen();
+                this.gameSound.pause();
+                this.gameOverSound.play();
                 console.log('gameOver')
             }
         }
@@ -102,6 +122,7 @@ Game.prototype.checkCheeseCollisions = function() {
     if (isCheeseColliding){
         this.winSound.play();
         this.level += 1;
+        this.cats = [];
         document.querySelector('#levelInfo').innerHTML = "LEVEL: " + this.level;
         console.log('Game level: ' + this.level);
         this.setNextLevelCallback();

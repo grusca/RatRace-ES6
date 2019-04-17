@@ -1,7 +1,7 @@
 'use strict'
 
 function Mouse (canvas, level = 1) {
-    this.lives = 3;
+    this.lives = 2;
     this.size = 60;
     this.canvas = canvas;
     this.x = this.canvas.width/2;
@@ -52,4 +52,14 @@ Mouse.prototype.checkCollisionWithCheese = function (cheese) {
     const cheeseCollisionBottom = this.y + this.size/2 > cheese.y - cheese.size/2;
     return cheeseCollisionRight && cheeseCollisionLeft && cheeseCollisionTop && cheeseCollisionBottom;
 }
+
+
+Mouse.prototype.checkCollisionWithTrap = function (trap) {
+    const trapCollisionRight = this.x + this.size/2 > trap.x - trap.size/2;
+    const trapCollisionLeft = this.x - this.size/2 < trap.x + trap.size/2;
+    const trapCollisionTop = this.y - this.size/2 < trap.y + trap.size/2;
+    const trapCollisionBottom = this.y + this.size/2 > trap.y - trap.size/2;
+    return trapCollisionRight && trapCollisionLeft && trapCollisionTop && trapCollisionBottom;
+}
+
 

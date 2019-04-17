@@ -143,7 +143,7 @@ body {
 
 
 h1{
-color:#E5E7E9;
+        color:#E5E7E9;
 }
 
 .splash {
@@ -158,7 +158,6 @@ color:#E5E7E9;
 
 .game-container {
     height: 100vh;
-    position: static;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAE5JREFUGBlj1Gs7+J+BCMBEhBqwErjCY151ePXAFVpta2KAKYbRyDoZ0d0IUgTShA7gJoIkYIqIMhFmEkwTjI9hNUwCnUaxGl0SmU+0QgBSdhqLggDquQAAAABJRU5ErkJggg==) repeat; 
 }
 
@@ -214,6 +213,9 @@ img {
     display: inline;
     -webkit-animation: pulsate-bck 2s ease-in-out infinite both;
     animation: pulsate-bck 2s ease-in-out infinite both;
+    -webkit-box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
   }
 
 .restart-button {
@@ -227,6 +229,9 @@ img {
         display: inline;
         -webkit-animation: pulsate-bck 2s ease-in-out infinite both;
         animation: pulsate-bck 2s ease-in-out infinite both;
+        -webkit-box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 56px -11px rgba(0,0,0,0.75);
         }
 
 
