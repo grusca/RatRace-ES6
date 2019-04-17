@@ -16,7 +16,7 @@ function main () {
                 <audio src="./sounds/introSound.wav" autoplay></audio>
                 <h1>Mouse Trap</h1>
                 <img src='img/cheese.png' alt=cheese height= "200px" width=auto"> 
-                <button class="start-button">Start</button>
+                <button class="start-button">START</button>
             </section>
             `);
 
@@ -32,8 +32,9 @@ function main () {
             <div class="gameInfo">    
                 <h2 id="levelInfo"></h2>
                 <h2 id="livesInfo"></h2>
-            </div>
-            <canvas></canvas>
+            </div>   
+            <canvas>
+            </canvas>
         </section>
         `);
 
@@ -83,9 +84,9 @@ function main () {
     function buildGameOverScreen() {
         const gameOverScreen = buildDom(`
             <section class="gameOver">
-                <h1>Looser</h1>
-                <p>Don't Let the Cat Catch You</p>
-                <button class="restart-button">Try Again</button>
+                <h1>LOOSER</h1>
+                <p>Don't Let the Cat Catch You!!</p>
+                <button class="restart-button">TRY AGAIN</button>
             </section>
         `)
 
