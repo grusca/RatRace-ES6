@@ -20,3 +20,4 @@ Cat.prototype.render = function() {
 Cat.prototype.update = function() {
     this.x = this.x + this.direction * this.speed;
 }
+

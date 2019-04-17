@@ -8,7 +8,7 @@ function Mouse (canvas, level = 1) {
     this.y = this.canvas.height/1.2;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgRat');
-    this.speed = 4;
+    this.speed = 5;
     this.xDirection = 0;
     this.yDirection = 0;
 }

@@ -25,10 +25,15 @@ Game.prototype.startLoop = function () {
 
     const loop = () => {
 
-        if (Math.random() < .04 * this.level ) {
+        if (Math.random() < .025  ) {
             //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 3) * this.canvas.height/3.5+90;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.9+110;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
+        }
+        if (Math.random() < .025 ) {
+            //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.9+240;
+            this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
         this.updateScreen();
@@ -55,6 +60,9 @@ Game.prototype.updateScreen = function() {
     this.cats.forEach(function(cat) {
         cat.update();
     });
+    this.traps.forEach(function(trap) {
+        trap.update();
+    });
 }
 
 
@@ -63,6 +71,9 @@ Game.prototype.renderScreen = function () {
     this.cheese.render();
     this.cats.forEach(function(cat) {
         cat.render()
+    })
+    this.traps.forEach(function(trap) {
+        trap.render()
     })
 }
 
