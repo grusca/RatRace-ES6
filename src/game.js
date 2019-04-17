@@ -38,6 +38,7 @@ Game.prototype.startLoop = function () {
         this.updateScreen();
         this.renderScreen();
         this.checkCatCollisions();
+        this.checkTrapCollisions();
         this.checkCheeseCollisions();
         if (this.gameOver === false)
         if (!this.gameOver) {
@@ -98,7 +99,7 @@ Game.prototype.checkCatCollisions = function() {
 }
 
 Game.prototype.checkTrapCollisions = function() {
-    this.cats.forEach((trap, index ) =>  {
+    this.traps.forEach((trap, index ) =>  {
         const isColliding = this.mouse.checkCollisionWithTrap(trap);
         if (isColliding){
             this.traps.splice(index,1);
@@ -118,11 +119,12 @@ Game.prototype.checkTrapCollisions = function() {
 
 
 Game.prototype.checkCheeseCollisions = function() {
-    const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
-    if (isCheeseColliding){
+    const isTrapColliding = this.mouse.checkCollisionWithCheese(this.cheese);
+    if (isTrapColliding){
         this.winSound.play();
         this.level += 1;
         this.cats = [];
+        this.traps = [];
         document.querySelector('#levelInfo').innerHTML = "LEVEL: " + this.level;
         console.log('Game level: ' + this.level);
         this.setNextLevelCallback();
