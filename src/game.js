@@ -13,6 +13,7 @@ function Game (canvas) {
     this.level = 1;
 };
 
+
 Game.prototype.startLoop = function () {
 
     this.gameSound.loop = true;
@@ -55,6 +56,7 @@ Game.prototype.updateScreen = function() {
     });
 }
 
+
 Game.prototype.renderScreen = function () {
     this.mouse.render();
     this.cheese.render();
@@ -62,6 +64,7 @@ Game.prototype.renderScreen = function () {
         cat.render()
     })
 }
+
 
 Game.prototype.checkCatCollisions = function() {
     this.cats.forEach((cat, index ) =>  {
@@ -80,6 +83,7 @@ Game.prototype.checkCatCollisions = function() {
     })
 }
 
+
 Game.prototype.checkCheeseCollisions = function() {
     const isCheeseColliding = this.mouse.checkCollisionWithCheese(this.cheese);
     if (isCheeseColliding){
@@ -94,11 +98,10 @@ Game.prototype.checkCheeseCollisions = function() {
 }
 
 
-
-
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;
 }
+
 
 Game.prototype.setNextLevelCallback = function() {
     this.cheese = new Cheese(this.canvas);

@@ -132,6 +132,9 @@
               animation-timing-function: ease-out;
     }
   }
+
+
+      
   
 body {
     margin: 0;
@@ -184,6 +187,7 @@ color:#E5E7E9;
         flex-direction: column;
         justify-content: center;
         height: 100vh;
+        background-image: radial-gradient(circle, #ffc107, #ffb700, #ffad00, #ffa200, #ff9800);
 }
 
 .title {
@@ -225,3 +229,8 @@ img {
         animation: pulsate-bck 2s ease-in-out infinite both;
         }
 
+
+#imgRat {
+        -webkit-animation: swirl-in-fwd 0.6s ease-out both;
+                animation: swirl-in-fwd 0.6s ease-out both;
+}
