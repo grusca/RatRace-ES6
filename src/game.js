@@ -3,6 +3,7 @@
 function Game (canvas) {
     this.mouse = null;
     this.cats = [];
+    this.traps = [];
     this.cheese = null;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
@@ -24,9 +25,9 @@ Game.prototype.startLoop = function () {
 
     const loop = () => {
 
-        if (Math.random() < .05 ) {
+        if (Math.random() < .04 * this.level ) {
             //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 3) * this.canvas.height/3+40;
+            const yAxis = Math.floor(Math.random() * 3) * this.canvas.height/3.5+90;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
         this.clearScreen();

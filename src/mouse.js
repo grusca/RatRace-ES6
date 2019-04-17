@@ -1,7 +1,7 @@
 'use strict'
 
 function Mouse (canvas, level = 1) {
-    this.lives = 4;
+    this.lives = 3;
     this.size = 60;
     this.canvas = canvas;
     this.x = this.canvas.width/2;

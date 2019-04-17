@@ -8,7 +8,7 @@ function Cheese (canvas) {
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgCheese');
     this.x = Math.floor(Math.random()*this.canvas.width);
-    this.y = Math.floor(Math.random()*this.canvas.height);
+    this.y = this.canvas.height/18;
 }
 
 
