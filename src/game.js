@@ -10,6 +10,7 @@ function Game (canvas) {
     this.gameOver = false;
     this.gameSound = new Audio ("sounds/gameSound.wav")
     this.catSound = new Audio ("sounds/catSound.wav")
+    this.trapSound = new Audio ("sounds/trapSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
     this.gameOverSound = new Audio ("sounds/loseSound.wav")
     this.level = 1;
@@ -26,11 +27,11 @@ Game.prototype.startLoop = function () {
 
     const loop = () => {
 
-        if (Math.random() < .025 ) {
+        if (Math.random() < .03 ) {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+100;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
-        if (Math.random() < .025 ) {
+        if (Math.random() < .03 ) {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+230;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
@@ -104,6 +105,7 @@ Game.prototype.checkTrapCollisions = function() {
         if (isColliding){
             this.traps.splice(index,1);
             this.mouse.setLives();
+            this.trapSound.play();
             document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
             if (this.mouse.lives === 0){
