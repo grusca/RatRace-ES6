@@ -27,12 +27,12 @@ Game.prototype.startLoop = function () {
 
         if (Math.random() < .025  ) {
             //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.9+110;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.8+110;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
         if (Math.random() < .025 ) {
             //const randomNumber = Math.random() * (this.canvas.height - 15)+ 15;
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.9+240;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.8+240;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
@@ -85,6 +85,7 @@ Game.prototype.checkCatCollisions = function() {
             this.cats.splice(index,1);
             this.mouse.setLives();
             this.catSound.play();
+            document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
             if (this.mouse.lives === 0){
                 this.gameOver = true;
