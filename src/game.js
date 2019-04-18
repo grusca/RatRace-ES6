@@ -27,12 +27,12 @@ Game.prototype.startLoop = function () {
 
     const loop = () => {
 
-        if (Math.random() < .03 ) {
+        if (Math.random() < (.03 + this.level/100) ) {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+100;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
-        if (Math.random() < .03 ) {
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+230;
+        if (Math.random() < (.03 + this.level/100) ) {
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+240;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
@@ -125,8 +125,8 @@ Game.prototype.checkCheeseCollisions = function() {
     if (isTrapColliding){
         this.winSound.play();
         this.level += 1;
-        this.cats = [];
-        this.traps = [];
+        //this.cats = [];
+        //this.traps = [];
         document.querySelector('#levelInfo').innerHTML = "LEVEL: " + this.level;
         console.log('Game level: ' + this.level);
         this.setNextLevelCallback();

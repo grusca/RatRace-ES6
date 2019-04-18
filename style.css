@@ -148,6 +148,7 @@ p {
 h1{
         color:#E5E7E9;
         font-family: 'Press Start 2P', cursive;
+        font-size: 40px;
 }
 
 h2 {
@@ -183,8 +184,7 @@ h2 {
         height: 9.5vh;
         border-width: 5px;
         border-color: #f39c12;
-        background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAF5JREFUGBlj/HLB/r/2RD8GfOBq/iYGJpAiEAMXAMmB1DCBFOBSDFMEUgNWiE0xsiKQPAuIgAFkk0FsZAA3EVkQGxtFIcw6ZJNhmuAKYYpgEuiKwQrRFWFTzEhsgAMAdeA0Iw9bsyQAAAAASUVORK5CYII=) repeat;     
-}
+        background-color: #00c9b7;}
 
 canvas{
         width: 100%;
