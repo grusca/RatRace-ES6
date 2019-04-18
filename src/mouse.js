@@ -18,9 +18,10 @@ Mouse.prototype.render = function () {
 }
 
 Mouse.prototype.update = function () {
-    this.x = this.x + this.xDirection * this.speed;
-    this.y = this.y + this.yDirection * this.speed;
+    this.x = Math.min(Math.max(this.x + this.xDirection * this.speed,this.size/2),this.canvas.width-this.size/2);
+    this.y = Math.min(Math.max(this.y + this.yDirection * this.speed,this.size/2),this.canvas.height-this.size/2);
 }
+
 
 Mouse.prototype.setxDirection = function (newDirection) {
     this.xDirection = newDirection;
