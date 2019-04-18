@@ -4,6 +4,7 @@ function Game (canvas) {
     this.mouse = null;
     this.cats = [];
     this.traps = [];
+    this.powerUp = [];
     this.cheese = null;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
@@ -35,12 +36,17 @@ Game.prototype.startLoop = function () {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+240;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
+        if (Math.random() < (.003) ) {
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+240;
+            this.powerUp.push(new Power(this.canvas, yAxis, this.level))
+        }
         this.clearScreen();
         this.updateScreen();
         this.renderScreen();
         this.checkCatCollisions();
         this.checkTrapCollisions();
         this.checkCheeseCollisions();
+        this.checkPowerCollisions();
         if (this.gameOver === false)
         if (!this.gameOver) {
             window.requestAnimationFrame(loop);
@@ -55,7 +61,8 @@ Game.prototype.clearScreen = function() {
 }
 
 
-Game.prototype.updateScreen = function() {
+Game.prototype.updateScreen = function
+() {
     this.mouse.update();
     this.cheese.update();
     this.cats.forEach(function(cat) {
@@ -63,6 +70,9 @@ Game.prototype.updateScreen = function() {
     });
     this.traps.forEach(function(trap) {
         trap.update();
+    });
+    this.powerUp.forEach(function(power) {
+        power.update();
     });
 }
 
@@ -75,6 +85,9 @@ Game.prototype.renderScreen = function () {
     })
     this.traps.forEach(function(trap) {
         trap.render()
+    })
+    this.powerUp.forEach(function(power) {
+        power.render()
     })
 }
 
@@ -135,6 +148,18 @@ Game.prototype.checkCheeseCollisions = function() {
     }
 }
 
+Game.prototype.checkPowerCollisions = function() {
+    this.powerUp.forEach((power, index ) =>  {
+        const isColliding = this.mouse.checkCollisionWithPower(power);
+        if (isColliding){
+            this.powerUp.splice(index,1);
+            this.trapSound.play();
+            this.mouse.speed = this.mouse.speed + 6
+            document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
+            console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
+        }
+    })
+}
 
 Game.prototype.setGameOverCallback = function(buildGameOverScreen) {
     this.buildGameOverScreen = buildGameOverScreen;

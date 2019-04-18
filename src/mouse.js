@@ -63,4 +63,10 @@ Mouse.prototype.checkCollisionWithTrap = function (trap) {
     return trapCollisionRight && trapCollisionLeft && trapCollisionTop && trapCollisionBottom;
 }
 
-
+Mouse.prototype.checkCollisionWithPower = function (power) {
+    const powerCollisionRight = this.x + this.size/2 > power.x - power.size/2;
+    const powerCollisionLeft = this.x - this.size/2 < power.x + power.size/2;
+    const powerCollisionTop = this.y - this.size/2 < power.y + power.size/2;
+    const powerCollisionBottom = this.y + this.size/2 > power.y - power.size/2;
+    return powerCollisionRight && powerCollisionLeft && powerCollisionTop && powerCollisionBottom;
+}
