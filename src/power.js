@@ -20,3 +20,4 @@ Power.prototype.render = function() {
 Power.prototype.update = function() {
     this.x = this.x + this.direction * this.speed;
 }
+

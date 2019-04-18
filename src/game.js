@@ -29,11 +29,11 @@ Game.prototype.startLoop = function () {
     const loop = () => {
 
         if (Math.random() < (.03 + this.level/100) ) {
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+100;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.5+100;
             this.cats.push(new Cat(this.canvas, yAxis, this.level))
         }
         if (Math.random() < (.03 + this.level/100) ) {
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+240;
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.5+260;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         if (Math.random() < (.003) ) {
