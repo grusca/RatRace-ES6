@@ -5,6 +5,7 @@ function Game (canvas) {
     this.cats = [];
     this.traps = [];
     this.powerUp = [];
+    this.poisons = [];
     this.cheese = null;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
@@ -14,6 +15,7 @@ function Game (canvas) {
     this.trapSound = new Audio ("sounds/trapSound.wav")
     this.winSound = new Audio ("sounds/winSound.wav")
     this.gameOverSound = new Audio ("sounds/loseSound.wav")
+    this.powerupSound = new Audio ("sounds/powerUp.wav")
     this.level = 1;
 };
 
@@ -37,8 +39,12 @@ Game.prototype.startLoop = function () {
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
         if (Math.random() < (.003) ) {
-            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.6+240;
+            const yAxis = Math.floor(Math.random() * 5) * this.canvas.height/5+100;
             this.powerUp.push(new Power(this.canvas, yAxis, this.level))
+        }
+        if (Math.random() < (.003) ) {
+            const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.5+180;
+            this.poisons.push(new Poison(this.canvas, yAxis, this.level))
         }
         this.clearScreen();
         this.updateScreen();
@@ -47,6 +53,7 @@ Game.prototype.startLoop = function () {
         this.checkTrapCollisions();
         this.checkCheeseCollisions();
         this.checkPowerCollisions();
+        this.checkPoisonCollisions();
         if (this.gameOver === false)
         if (!this.gameOver) {
             window.requestAnimationFrame(loop);
@@ -74,6 +81,9 @@ Game.prototype.updateScreen = function
     this.powerUp.forEach(function(power) {
         power.update();
     });
+    this.poisons.forEach(function(poison) {
+        poison.update();
+    });
 }
 
 
@@ -88,6 +98,9 @@ Game.prototype.renderScreen = function () {
     })
     this.powerUp.forEach(function(power) {
         power.render()
+    })
+    this.poisons.forEach(function(poison) {
+        poison.render()
     })
 }
 
@@ -153,8 +166,22 @@ Game.prototype.checkPowerCollisions = function() {
         const isColliding = this.mouse.checkCollisionWithPower(power);
         if (isColliding){
             this.powerUp.splice(index,1);
-            this.trapSound.play();
-            this.mouse.speed = this.mouse.speed + 6
+            this.powerupSound.play();
+            this.mouse.speed = this.mouse.speed + 6;
+            document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
+            console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
+        }
+    })
+}
+
+Game.prototype.checkPoisonCollisions = function() {
+    this.poisons.forEach((poison, index ) =>  {
+        const isColliding = this.mouse.checkCollisionWithPoison(poison);
+        if (isColliding){
+            this.poisons.splice(index,1);
+            //this.poisonupSound.play();
+            this.mouse.speed -= this.mouse.speed - 3;
+            this.mouse.size = this.mouse.size / 1.4;
             document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
             console.log('Collision detected, Mouse has now ',this.mouse.lives + ' lives')
         }

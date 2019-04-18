@@ -5,7 +5,7 @@ function Mouse (canvas, level = 1) {
     this.size = 60;
     this.canvas = canvas;
     this.x = this.canvas.width/2;
-    this.y = this.canvas.height/1.2;
+    this.y = this.canvas.height/1.1;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgRat');
     this.speed = 5;
@@ -69,4 +69,12 @@ Mouse.prototype.checkCollisionWithPower = function (power) {
     const powerCollisionTop = this.y - this.size/2 < power.y + power.size/2;
     const powerCollisionBottom = this.y + this.size/2 > power.y - power.size/2;
     return powerCollisionRight && powerCollisionLeft && powerCollisionTop && powerCollisionBottom;
+}
+
+Mouse.prototype.checkCollisionWithPoison = function (poison) {
+    const poisonCollisionRight = this.x + this.size/2 > poison.x - poison.size/2;
+    const poisonCollisionLeft = this.x - this.size/2 < poison.x + poison.size/2;
+    const poisonCollisionTop = this.y - this.size/2 < poison.y + poison.size/2;
+    const poisonCollisionBottom = this.y + this.size/2 > poison.y - poison.size/2;
+    return poisonCollisionRight && poisonCollisionLeft && poisonCollisionTop && poisonCollisionBottom;
 }
