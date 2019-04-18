@@ -2,10 +2,10 @@
 
 function Mouse (canvas, level = 1) {
     this.lives = 2;
-    this.size = 60;
+    this.size = 55;
     this.canvas = canvas;
     this.x = this.canvas.width/2;
-    this.y = this.canvas.height/1.1;
+    this.y = this.canvas.height/1.06;
     this.ctx = this.canvas.getContext('2d');
     this.img = document.getElementById('imgRat');
     this.speed = 5;
@@ -14,7 +14,7 @@ function Mouse (canvas, level = 1) {
 }
 
 Mouse.prototype.render = function () {                                                    
-    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size*1.2); 
+    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size); 
 }
 
 Mouse.prototype.update = function () {

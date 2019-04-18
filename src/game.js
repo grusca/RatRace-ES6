@@ -39,11 +39,11 @@ Game.prototype.startLoop = function () {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.5+255;
             this.traps.push(new Trap(this.canvas, yAxis, this.level))
         }
-        if (Math.random() < (.003) ) {
-            const yAxis = Math.floor(Math.random() * 5) * this.canvas.height/5+100;
+        if (Math.random() < (.004) ) {
+            const yAxis = Math.floor(Math.random() * 10) * this.canvas.height/10+100;
             this.powerUp.push(new Power(this.canvas, yAxis, this.level))
         }
-        if (Math.random() < (.003) ) {
+        if (Math.random() < (.005) ) {
             const yAxis = Math.floor(Math.random() * 2) * this.canvas.height/2.5+180;
             this.poisons.push(new Poison(this.canvas, yAxis, this.level))
         }
