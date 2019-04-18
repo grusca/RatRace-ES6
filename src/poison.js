@@ -13,7 +13,7 @@ function Poison (canvas, y, speed) {
 
 
 Poison.prototype.render = function() {
-    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size*1.4, this.size); 
+    this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size); 
 }
 
 

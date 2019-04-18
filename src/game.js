@@ -16,6 +16,7 @@ function Game (canvas) {
     this.winSound = new Audio ("sounds/winSound.wav")
     this.gameOverSound = new Audio ("sounds/loseSound.wav")
     this.powerupSound = new Audio ("sounds/powerUp.wav")
+    this.poisonSound = new Audio ("sounds/poison.wav")
     this.level = 1;
 };
 
@@ -179,7 +180,7 @@ Game.prototype.checkPoisonCollisions = function() {
         const isColliding = this.mouse.checkCollisionWithPoison(poison);
         if (isColliding){
             this.poisons.splice(index,1);
-            //this.poisonupSound.play();
+            this.poisonSound.play();
             this.mouse.speed -= this.mouse.speed - 3;
             this.mouse.size = this.mouse.size / 1.4;
             document.querySelector('#livesInfo').innerHTML = "LIVES: " + this.mouse.lives;
