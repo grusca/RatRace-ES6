@@ -14,8 +14,8 @@ function main () {
         const splashScreen = buildDom(`
             <section class='splash'>
                 <audio src="./sounds/introSound.wav" autoplay></audio>
-                <h1>Mouse Trap</h1>
-                <img src='img/cheese.png' alt=cheese height= "200px" width=auto"> 
+                <h1>RAT RACE</h1>
+                <img src='img/rat.png' alt=cheese height= "200px" width=auto"> 
                 <button class="start-button">START</button>
             </section>
             `);
