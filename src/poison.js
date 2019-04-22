@@ -12,11 +12,11 @@ class Poison {
         this.y = y;
     }
 
-    render = function() {
+    render () {
         this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size); 
     }
 
-    update = function() {
+    update () {
         this.x = this.x + this.direction * this.speed;
     }
 }

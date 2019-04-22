@@ -14,28 +14,28 @@ class Mouse {
         this.yDirection = 0;
     }
 
-    render = function () {                                                    
+    render () {                                                    
         this.ctx.drawImage(this.img,this.x - this.size/2, this.y-this.size/2, this.size, this.size); 
     }
 
-    update = function () {
+    update () {
         this.x = Math.min(Math.max(this.x + this.xDirection * this.speed,this.size/2),this.canvas.width-this.size/2);
         this.y = Math.min(Math.max(this.y + this.yDirection * this.speed,this.size/2),this.canvas.height-this.size/2);
     }
 
-    setxDirection = function (newDirection) {
+    setxDirection (newDirection) {
         this.xDirection = newDirection;
     }
 
-    setyDirection = function (newDirection) {
+    setyDirection (newDirection) {
         this.yDirection = newDirection;
     }
 
-    setLives = function () {
+    setLives () {
         this.lives --;
     }
 
-    checkCollisionWithCat = function (cat) {
+    checkCollisionWithCat (cat) {
         const catCollisionRight = this.x + this.size/2 > cat.x - cat.size/2;
         const catCollisionLeft = this.x - this.size/2 < cat.x + cat.size/2;
         const catCollisionTop = this.y - this.size/2 < cat.y + cat.size/2;
@@ -43,7 +43,7 @@ class Mouse {
         return catCollisionRight && catCollisionLeft && catCollisionTop && catCollisionBottom;
     }
 
-    checkCollisionWithCheese = function (cheese) {
+    checkCollisionWithCheese (cheese) {
         const cheeseCollisionRight = this.x + this.size/2 > cheese.x - cheese.size/2;
         const cheeseCollisionLeft = this.x - this.size/2 < cheese.x + cheese.size/2;
         const cheeseCollisionTop = this.y - this.size/2 < cheese.y + cheese.size/2;
@@ -51,7 +51,7 @@ class Mouse {
         return cheeseCollisionRight && cheeseCollisionLeft && cheeseCollisionTop && cheeseCollisionBottom;
     }
 
-    checkCollisionWithTrap = function (trap) {
+    checkCollisionWithTrap (trap) {
         const trapCollisionRight = this.x + this.size/2 > trap.x - trap.size/2;
         const trapCollisionLeft = this.x - this.size/2 < trap.x + trap.size/2;
         const trapCollisionTop = this.y - this.size/2 < trap.y + trap.size/2;
@@ -59,7 +59,7 @@ class Mouse {
         return trapCollisionRight && trapCollisionLeft && trapCollisionTop && trapCollisionBottom;
     }
 
-    checkCollisionWithPower = function (power) {
+    checkCollisionWithPower (power) {
         const powerCollisionRight = this.x + this.size/2 > power.x - power.size/2;
         const powerCollisionLeft = this.x - this.size/2 < power.x + power.size/2;
         const powerCollisionTop = this.y - this.size/2 < power.y + power.size/2;
@@ -67,11 +67,12 @@ class Mouse {
         return powerCollisionRight && powerCollisionLeft && powerCollisionTop && powerCollisionBottom;
     }
 
-    checkCollisionWithPoison = function (poison) {
+    checkCollisionWithPoison (poison) {
         const poisonCollisionRight = this.x + this.size/2 > poison.x - poison.size/2;
         const poisonCollisionLeft = this.x - this.size/2 < poison.x + poison.size/2;
         const poisonCollisionTop = this.y - this.size/2 < poison.y + poison.size/2;
         const poisonCollisionBottom = this.y + this.size/2 > poison.y - poison.size/2;
         return poisonCollisionRight && poisonCollisionLeft && poisonCollisionTop && poisonCollisionBottom;
     }
+
 }

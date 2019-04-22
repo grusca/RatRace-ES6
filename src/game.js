@@ -63,12 +63,11 @@ class Game {
         window.requestAnimationFrame(loop);
     }
 
-    clearScreen = function() {
+    clearScreen () {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    updateScreen = function
-    () {
+    updateScreen () {
         this.mouse.update();
         this.cheese.update();
         this.cats.forEach(function(cat) {
@@ -86,7 +85,7 @@ class Game {
     }
 
 
-    renderScreen = function () {
+    renderScreen  () {
         this.mouse.render();
         this.cheese.render();
         this.cats.forEach(function(cat) {
@@ -104,7 +103,7 @@ class Game {
     }
 
 
-    checkCatCollisions = function() {
+    checkCatCollisions () {
         this.cats.forEach((cat, index ) =>  {
             const isColliding = this.mouse.checkCollisionWithCat(cat);
             if (isColliding){
@@ -124,7 +123,7 @@ class Game {
         })
     }
 
-    checkTrapCollisions = function() {
+    checkTrapCollisions () {
         this.traps.forEach((trap, index ) =>  {
             const isColliding = this.mouse.checkCollisionWithTrap(trap);
             if (isColliding){
@@ -144,7 +143,7 @@ class Game {
         })
     }
 
-    checkCheeseCollisions = function() {
+    checkCheeseCollisions () {
         const isTrapColliding = this.mouse.checkCollisionWithCheese(this.cheese);
         if (isTrapColliding){
             this.winSound.play();
@@ -159,7 +158,7 @@ class Game {
         }
     }
 
-    checkPowerCollisions = function() {
+    checkPowerCollisions () {
         this.powerUp.forEach((power, index ) =>  {
             const isColliding = this.mouse.checkCollisionWithPower(power);
             if (isColliding){
@@ -172,7 +171,7 @@ class Game {
         })
     }
 
-    checkPoisonCollisions = function() {
+    checkPoisonCollisions () {
         this.poisons.forEach((poison, index ) =>  {
             const isColliding = this.mouse.checkCollisionWithPoison(poison);
             if (isColliding){
@@ -186,11 +185,11 @@ class Game {
         })
     }
 
-    setGameOverCallback = function(buildGameOverScreen) {
+    setGameOverCallback (buildGameOverScreen) {
         this.buildGameOverScreen = buildGameOverScreen;
     }
 
-    setNextLevelCallback = function() {
+    setNextLevelCallback () {
         this.cheese = new Cheese(this.canvas);
         this.mouse = new Mouse(this.canvas);
         this.gameSound.loop = true;
