@@ -21,7 +21,6 @@ class Game {
         this.level = 1;
     }
 
-
     startLoop = function () {
 
         this.gameSound.loop = true;
@@ -64,11 +63,9 @@ class Game {
         window.requestAnimationFrame(loop);
     }
 
-
     clearScreen = function() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
-
 
     updateScreen = function
     () {
@@ -147,7 +144,6 @@ class Game {
         })
     }
 
-
     checkCheeseCollisions = function() {
         const isTrapColliding = this.mouse.checkCollisionWithCheese(this.cheese);
         if (isTrapColliding){
@@ -193,7 +189,6 @@ class Game {
     setGameOverCallback = function(buildGameOverScreen) {
         this.buildGameOverScreen = buildGameOverScreen;
     }
-
 
     setNextLevelCallback = function() {
         this.cheese = new Cheese(this.canvas);
